@@ -5,6 +5,7 @@ from pyrogram.raw.all import layer
 from config import Config
 from aiohttp import web
 from route import web_server
+import asyncio
 
 class Bot(Client):
 
@@ -41,8 +42,12 @@ class Bot(Client):
                 await self.send_message(Config.LOG_CHANNEL, f"**{me.mention} Is Restarted !!**\n\n📅 Date : `{date}`\n⏰ Time : `{time}`\n🌐 Timezone : `Asia/Kolkata`\n\n🉐 Version : `v{__version__} (Layer {layer})`</b>")                                
             except:
                 print("Please Make This Is Admin In Your Log Channel")
+                
+async def main():
+    await Bot().run()
 
-Bot().run()
+if __name__ == "__main__":
+    asyncio.run(main())
 
 
 
