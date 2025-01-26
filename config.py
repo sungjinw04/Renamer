@@ -33,8 +33,7 @@ class Txt(object):
     
 ➻ This Bot Also Supports Custom Thumbnail And Custom Caption.
     
-➻ Use /tutorial Command To Know How To Use Me.
-    
+➻ Use /tutorial Command To Know How To Use Me."""
     
     FILE_NAME_TXT = """<b><u>SETUP AUTO RENAME FORMAT</u></b>
 
