@@ -3,8 +3,8 @@ id_pattern = re.compile(r'^.\d+$')
 
 class Config(object):
     # pyro client config
-    API_ID    = os.environ.get("API_ID", "16768772")
-    API_HASH  = os.environ.get("API_HASH", "08d78fb05bdb90f1be4a4f1f0fef5f1e")
+    API_ID    = os.environ.get("API_ID", "28620311")
+    API_HASH  = os.environ.get("API_HASH", "3b5c4ed0598e48fc1ab552675555e693")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7844561682:AAEKHVmUPhJC4Wizl_8Ocs_3xVNd3qBNtx0") 
 
     # database config
@@ -16,7 +16,7 @@ class Config(object):
     START_PIC   = os.environ.get("START_PIC", "https://graph.org/file/4b306f4b15c23a8f22e58.jpg")
     ADMIN       = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '7392339658').split()]
     FORCE_SUB   = os.environ.get("FORCE_SUB", "-1002235060829") 
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002351486579"))
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002425816622"))
     
     # wes response configuration     
     WEBHOOK = bool(os.environ.get("WEBHOOK", "True"))
