@@ -10,13 +10,13 @@ async def start(client, message):
     user = message.from_user
     await madflixbotz.add_user(client, message)                
     button = InlineKeyboardMarkup([[
-      InlineKeyboardButton('📢 Updates', url='https://t.me/Madflix_Bots'),
-      InlineKeyboardButton('💬 Support', url='https://t.me/MadflixBots_Support')
+      InlineKeyboardButton('📢 Updates', url='https://t.me/Eldian_Bot_Update'),
+      InlineKeyboardButton('💬 Support', url='https://t.me/Eldian_Bot_Support')
     ],[
       InlineKeyboardButton('⚙️ Help', callback_data='help'),
       InlineKeyboardButton('💙 About', callback_data='about')
     ],[
-        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/CallAdminRobot')
+        InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/Jinwoo_Sung4')
     ]])
     if Config.START_PIC:
         await message.reply_photo(Config.START_PIC, caption=Txt.START_TXT.format(user.mention), reply_markup=button)       
@@ -33,13 +33,13 @@ async def cb_handler(client, query: CallbackQuery):
             text=Txt.START_TXT.format(query.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton('📢 Updates', url='https://t.me/Madflix_Bots'),
-                InlineKeyboardButton('💬 Support', url='https://t.me/MadflixBots_Support')
+                InlineKeyboardButton('📢 Updates', url='https://t.me/Eldian_Bot_Update'),
+                InlineKeyboardButton('💬 Support', url='https://t.me/Eldian_Bot_Support')
                 ],[
                 InlineKeyboardButton('⚙️ Help', callback_data='help'),
                 InlineKeyboardButton('💙 About', callback_data='about')
                 ],[
-                InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/CallAdminRobot')
+                InlineKeyboardButton("🧑‍💻 Developer 🧑‍💻", url='https://t.me/Jinwoo_Sung4')
                 ]])
         )
     elif data == "caption":
@@ -62,17 +62,8 @@ async def cb_handler(client, query: CallbackQuery):
                 InlineKeyboardButton('✏️ Caption', callback_data='caption')
                 ],[
                 InlineKeyboardButton('🏠 Home', callback_data='home'),
-                InlineKeyboardButton('💰 Donate', callback_data='donate')
+                
                 ]])
-        )
-    elif data == "donate":
-        await query.message.edit_text(
-            text=Txt.DONATE_TXT,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="help")
-            ]])          
         )
     
     elif data == "file_names":
@@ -95,15 +86,7 @@ async def cb_handler(client, query: CallbackQuery):
             ]]),
         )
 
-    elif data == "about":
-        await query.message.edit_text(
-            text=Txt.ABOUT_TXT,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("✖️ Close", callback_data="close"),
-                InlineKeyboardButton("🔙 Back", callback_data="home")
-            ]])          
-        )
+    
     
     
     elif data == "close":
