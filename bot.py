@@ -9,8 +9,8 @@ import asyncio
 import pyrogram.utils
 
 pyrogram.utils.MIN_CHANNEL_ID = -1002425816622
-class Bot(Client):
 
+class Bot(Client):
     def __init__(self):
         super().__init__(
             name="renamer",
@@ -34,8 +34,10 @@ class Bot(Client):
             await web.TCPSite(app, "0.0.0.0", 8080).start()     
         print(f"{me.first_name} Is Started.....✨️")
         for id in Config.ADMIN:
-            try: await self.send_message(Config.LOG_CHANNEL, f"**{me.first_name}  Is Started.....✨️**")                                
-            except: pass
+            try:
+                await self.send_message(Config.LOG_CHANNEL, f"**{me.first_name}  Is Started.....✨️**")                                
+            except:
+                pass
         if Config.LOG_CHANNEL:
             try:
                 curr = datetime.now(timezone("Asia/Kolkata"))
@@ -43,10 +45,24 @@ class Bot(Client):
                 time = curr.strftime('%I:%M:%S %p')
                 await self.send_message(Config.LOG_CHANNEL, f"**{me.mention} Is Restarted !!**\n\n📅 Date : `{date}`\n⏰ Time : `{time}`\n🌐 Timezone : `Asia/Kolkata`\n\n🉐 Version : `v{__version__} (Layer {layer})`</b>")                                
             except:
-                print("Please Make This Is Admin In Your Log Channel")
-                
+                print("Please Make This Bot Admin In Your Log Channel")
+
 async def main():
-    await Bot().run()
+    bot = Bot()
+    await bot.start()
+    await asyncio.Event().wait()  # Keep the bot running
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        # Check if an event loop is already running
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            # If the loop is running, schedule `main()` instead
+            loop.create_task(main())
+        else:
+            # If no loop is running, use `asyncio.run`
+            asyncio.run(main())
+    except RuntimeError:
+        # Fallback for environments with issues
+        asyncio.run(main())
+
